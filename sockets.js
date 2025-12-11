@@ -8,7 +8,7 @@ const _supabase = createClient(
   "sb_publishable_FHQ51ohsl-UfUY2QMpAf4g_KPktREu8"
 );
 
-console.log(_supabase);
+// console.log(_supabase);
 
 export async function createConnection() {
     _supabase
