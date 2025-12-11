@@ -1,12 +1,5 @@
-import "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
 import { update } from "./index.js";
-
-const { createClient } = supabase;
-
-const _supabase = createClient(
-  "https://bqecplanaeqkgzvfoynn.supabase.co",
-  "sb_publishable_FHQ51ohsl-UfUY2QMpAf4g_KPktREu8"
-);
+import { _supabase } from "./supabase.js";
 
 // console.log(_supabase);
 

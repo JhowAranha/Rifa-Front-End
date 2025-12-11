@@ -1,12 +1,9 @@
 import Grid from "./grid.js"
+import { _supabase } from "./supabase.js"
 import { createConnection } from "./sockets.js"
+import { getData } from "./db-functions.js"
 
 createConnection()
-
-async function getData() {
-    const response = await fetch("https://rifa-diik.onrender.com/get")
-    return (await response.json())
-}
 
 export async function update() {
     const numList = (await getData()).data

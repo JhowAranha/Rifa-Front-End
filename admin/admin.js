@@ -1,4 +1,5 @@
 import Grid from "../grid.js"
+import { getData } from "../db-functions.js"
 
 async function initializeLogin() {
     document.body.innerHTML = `
@@ -46,10 +47,10 @@ async function initializeAdmin() {
         <div id="grid" class="w-90 h-90 h-fit md:w-120 rounded gap-0 grid grid-flow-row absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[verdana] text-center"></div>
     `
 
-    async function getData() {
-        const response = await fetch("https://rifa-diik.onrender.com/get")
-        return (await response.json())
-    }
+    // async function getData() {
+    //     const response = await fetch("https://rifa-diik.onrender.com/get")
+    //     return (await response.json())
+    // }
 
     async function alterCell(id) {
         const response = await fetch("https://rifa-diik.onrender.com/toggle", {
