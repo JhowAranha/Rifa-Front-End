@@ -9,7 +9,7 @@ export default function Grid(numList) {
             for (const cell of numList) {
                 if (cell.id == i) {
                     const colSize = "12"
-                    const col = `<div class="w-${colSize-3} h-${colSize-3} md:w-${colSize} md:h-${colSize} flex text-center ${cell.checked == true ? "bg-stone-500" : "bg-stone-300"} text-center border rounded items-center"><span class="text-center m-auto">${cell.id}</span></div>`
+                    const col = `<div class=" w-${colSize-3} h-${colSize-3} md:w-${colSize} md:h-${colSize} flex text-center ${cell.checked == true ? "bg-stone-500" : "bg-stone-300"} text-center border border-black rounded items-center"><span class="text-center m-auto">${cell.id}</span></div>`
 
                     gridDOM.innerHTML += col
                 }

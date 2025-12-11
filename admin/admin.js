@@ -44,7 +44,7 @@ async function initializeAdmin() {
             <input type="number" name="" id="num-input" class="bg-stone-300 w-20 p-2">
             <button id="toggle-btn" class="bg-stone-300 p-2">Toggle</button>
         </div>
-        <div id="grid" class="w-90 h-90 h-fit md:w-120 rounded gap-0 grid grid-flow-row absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[verdana] text-center"></div>
+        <div id="grid" class="bg-black w-[350px] md:w-[480px] rounded gap-0 grid grid-flow-row absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] font-[verdana] text-center"></div>
     `
 
     // async function getData() {
