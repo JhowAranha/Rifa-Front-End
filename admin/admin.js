@@ -1,33 +1,41 @@
 import Grid from "../grid.js"
 import { getData } from "../db-functions.js"
+import { createConnection } from "../sockets.js"
 
 async function initializeLogin() {
     document.body.innerHTML = `
         <div class="m-auto">
             <h1 class="text-white text-3xl mb-4">Admin Login</h1>
+            <input type="text" id="admin-username" class="bg-stone-300 p-2 mb-4 w-full" placeholder="Enter admin username">
             <input type="password" id="admin-password" class="bg-stone-300 p-2 mb-4 w-full" placeholder="Enter admin password">
             <button id="login-btn" class="bg-stone-300 p-2 w-full">Login</button>
         </div>
     `
     const loginBtn = document.getElementById("login-btn")
     const passwordInput = document.getElementById("admin-password")
+    const usernameInput = document.getElementById("admin-username")
 
-    async function verifyLogin(password) {
-        const response = await fetch("https://rifa-diik.onrender.com/admin-login", {
+    async function verifyLogin(username, password) {
+        const url = "https://rifa-backend-go.onrender.com/login"
+        // const url = "http://localhost:3000/login"
+        const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ password: password })
+            body: JSON.stringify({ username: username, password: password })
         })
-        return (await response.status)
+        return (await response)
     }
 
     loginBtn.addEventListener("click", async () => {
         const password = passwordInput.value
+        const username = usernameInput.value
 
-        const status = await verifyLogin(password)
-        if (status === 200) {
+        const response = await verifyLogin(username, password)
+        const check = await response.json()
+        console.log(check)
+        if (check === true) {
             alert("Login successful!")
             initializeAdmin()
         } else {
@@ -37,7 +45,10 @@ async function initializeLogin() {
 }
 
 async function initializeAdmin() {
+    
     console.log("Admin JS loaded")
+
+    createConnection()
 
     document.body.innerHTML = `
         <div>
@@ -53,7 +64,9 @@ async function initializeAdmin() {
     // }
 
     async function alterCell(id) {
-        const response = await fetch("https://rifa-diik.onrender.com/toggle", {
+        const url = "https://rifa-backend-go.onrender.com/toggle"
+        // const url = "http://localhost:3000/toggle"
+        const response = await fetch(url, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
